@@ -16,6 +16,11 @@ nav {
 }
 nav a {
     font-size: 33px;
-    color:rgb(0, 0, 0);
+    color:rgb(255, 253, 253);
+    text-decoration: none;
+    text-shadow: 3px 3px 0 #3f3f3f;
     font-family: "Press Start 2P", monospace;
+}
+nav a:hover{
+    color: #ffff55;
 }
