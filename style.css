@@ -1,6 +1,9 @@
 * {
     font-family:'Courier New', Courier, monospace;  
 }
+nav {
+    background-image: url(/images/bcgdi.jpg);
+}
 nav a {
     font-size: 35px;
     color:rgb(55, 107, 4);
