@@ -4,7 +4,12 @@
 nav {
     background-image: url(images/bcgdi.jpg);
     background-size: 100%;
-    
+    margin: 0;
+    min-height: 100vh;
+    background-size: cover;
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 nav a {
     font-size: 33px;
