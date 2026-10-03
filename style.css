@@ -4,10 +4,11 @@
 nav {
     background-image: url(images/bcgdi.jpg);
     background-size: 100%;
+    width: 100%;
     
 }
 nav a {
-    font-size: 35px;
+    font-size: 33px;
     color:rgb(0, 0, 0);
     font-family: "Press Start 2P", monospace;
 }
