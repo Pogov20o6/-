@@ -7,13 +7,14 @@ header{
 }
 
 .wrapper{
-    background: linear-gradient(180deg, #000 0%, #000 100%);
+    background: linear-gradient(180deg, #150 0%, #445 100%);
 }
 * {
     font-family:'Courier New', Courier, monospace;  
 }
 nav {
     background-image: url(images/bcgdi.jpg);
+
 }
 nav a {
     font-size: 35px;
