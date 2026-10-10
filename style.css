@@ -1,5 +1,5 @@
 * {
-    font-family:'Courier New', Courier, monospace;
+    font-family: "Press Start 2P", monospace;
 }
 nav {
     margin: 0;
@@ -24,22 +24,33 @@ nav a {
 nav a:hover{
     color: #ffff55;
 }
-.out_look p{
-    text-align: center;
-    font-size: 33px;
-}
-.inout_1 {
-    border-block: red;
-}
-.out_look img{
-    width: 100px;
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
 }
 
-.tip_0 {
-    background: #140118;
+.card {
+    background: #222;
     color: #fff;
-    padding: 18px 20px;
-    box-shadow:
-            0 0 0 4px #2a0a6b,
-            inset 0 0 0 2px #5a1fd1;
+    border: 2px solid #6a3fb5;
+    padding: 16px;
+    text-align: center;
+}
+
+.card img {
+    width: 100%;
+    max-width: 140px;
+    image-rendering: pixelated; /* пиксели остаются чёткими */
+}
+body{
+    background-color: #736765;
+}
+
+.paro{text-align: center;
+color: white;}
+
+.razmeer{
+    color: aqua;
+    font-size: 30px;
 }
