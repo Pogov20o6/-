@@ -47,10 +47,11 @@ body{
     background-color: #736765;
 }
 
-.paro{text-align: center;
-color: white;}
+.zagon{text-align: center;
+color: white;
+font-size: 30px;}
 
-.razmeer{
+.color-text{
     color: aqua;
     font-size: 30px;
 }
