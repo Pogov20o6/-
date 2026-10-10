@@ -24,6 +24,10 @@ nav a {
 nav a:hover{
     color: #ffff55;
 }
-.inout_2 p{
+.out_look p{
     text-align: center;
+    font-size: 33px;
+}
+.inout_1 {
+    border-block: red;
 }
