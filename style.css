@@ -1,5 +1,5 @@
 * {
-    font-family:'Courier New', Courier, monospace;
+    font-family: "Press Start 2P", monospace;
 }
 body{
     background-color: #140118;
@@ -27,10 +27,34 @@ nav a {
 nav a:hover{
     color: #ffff55;
 }
-.out_look p{
-    text-align: center;
-    font-size: 33px;
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
 }
-.inout_1 {
-    border-block: red;
+
+.card {
+    background: #222;
+    color: #fff;
+    border: 2px solid #6a3fb5;
+    padding: 16px;
+    text-align: center;
+}
+
+.card img {
+    width: 100%;
+    max-width: 140px;
+    image-rendering: pixelated; /* пиксели остаются чёткими */
+}
+body{
+    background-color: #736765;
+}
+
+.zagon{text-align: center;
+color: white;
+font-size: 30px;}
+
+.color-text{
+    color: aqua;
+    font-size: 30px;
 }
