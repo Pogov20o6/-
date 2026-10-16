@@ -266,3 +266,83 @@ body{
     .info-card { width: 100%; }
     .cart-item { flex-wrap: wrap; }
 }
+.BIG-BOOM{
+    font-size: 33px;
+}
+
+/* ===== Главная страница ===== */
+.home-section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.home-title {
+    font-size: 33px;
+    text-align: center;
+    color: #fff;
+    text-shadow: 3px 3px 0 #3f3f3f;
+    margin: 30px 0 10px;
+}
+
+.home-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px 0;
+}
+
+.home-card {
+    width: 300px;
+    background: #222;
+    color: #fff;
+    border: 2px solid #6a3fb5;
+    padding: 16px;
+    text-align: center;
+}
+
+.home-card__img {
+    width: 100%;
+    max-width: 140px;
+    image-rendering: pixelated;
+    margin-bottom: 10px;
+}
+
+.home-card__name {
+    font-size: 14px;
+    color: #55ffff;
+    margin-bottom: 12px;
+}
+
+.home-card__text {
+    font-size: 11px;
+    line-height: 1.8;
+    margin-bottom: 8px;
+}
+
+.home-card__price {
+    font-size: 14px;
+    color: #ffff55;
+    margin: 12px 0;
+}
+
+.home-btn {
+    font-size: 12px;
+    color: #fff;
+    background: #6a3fb5;
+    border: 3px solid #3f3f3f;
+    padding: 12px 16px;
+    cursor: pointer;
+    text-shadow: 2px 2px 0 #3f3f3f;
+}
+
+.home-btn:hover {
+    background: #8a5fd5;
+    color: #ffff55;
+}
+
+@media (max-width: 600px) {
+    .home-title { font-size: 22px; }
+    .home-card { width: 100%; }
+}
