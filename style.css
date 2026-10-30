@@ -1,348 +1,569 @@
+/* ============================================================
+   style.css — единственный файл стилей магазина «Биомы и измерения»
+
+   Палитра (5 основных цветов):
+     #140118  фон страницы (тёмно-фиолетовый)
+     #222222  панели, карточки, шапка (тёмно-серый)
+     #6a3fb5  акцент: рамки, кнопки, активный пункт меню (фиолетовый)
+     #ffff55  подсветка: цены, hover, бейдж «Хит» (жёлтый)
+     #55ffff  заголовки карточек, ссылки в тексте (бирюзовый),
+              он же записан как rgb(85, 255, 255)
+   Нейтральные: white (текст), black (тени и рамки)
+   Оттенок акцента для hover кнопок и посещённых ссылок: #8a5fd5
+
+   Шаг отступов: 8px (8, 16, 24, 32, 48)
+   Шрифты в rem, ширины в % и max-width, рамки и тени в px
+   ============================================================ */
+
+/* ===== Сброс и базовые правила ===== */
 * {
+    box-sizing: border-box;
     margin: 0;
-    font-family: "Press Start 2P", monospace;
 }
-body{
-    background-color: #140118;
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
     min-height: 100vh;
-    display: flex;
-    flex-direction: column;
+    background-color: #140118;
+    color: white;
+    font-family: "Press Start 2P", "Courier New", monospace;
+    font-size: 0.75rem;
+    line-height: 1.6;
 }
 
-main {
-    flex: 1;
+img {
+    max-width: 100%;
+    height: auto;
+    image-rendering: pixelated;
 }
 
-footer {
-    margin-top: 40px;
-    padding: 30px 20px;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    gap: 15px 25px;
-    background-image: url(images/bg-nav.jpg);
-    background-size: auto 100%;
-    background-position: center;
-    background-repeat: repeat-x;
-    border-top: 6px solid #3f3f3f;
-    box-shadow: inset 0 4px 0 #6b6b6b;
+/* Пиксельный шрифт существует только в одном начертании:
+   отключаем синтетический bold у заголовков, иначе буквы «плывут» */
+h1,
+h2,
+h3 {
+    font-weight: normal;
 }
 
-footer a {
-    font-size: 16px;
-    color: #fffdfd;
-    text-decoration: none;
-    text-shadow: 3px 3px 0 #3f3f3f;
+/* ===== Контейнер страницы ===== */
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 16px;
 }
 
-footer a:hover {
-    color: #ffff55;
+.page {
+    padding: 32px 16px 48px;
 }
 
-.footer__copy {
-    width: 100%;
+/* ===== Заголовки и текст ===== */
+.page__title {
+    margin-bottom: 32px;
+    font-size: 1.5rem;
+    line-height: 1.3;
+    letter-spacing: 2px;
     text-align: center;
-    font-size: 10px;
-    color: #aaaaaa;
-    text-shadow: 2px 2px 0 #3f3f3f;
+    text-transform: uppercase;
+    text-shadow: 4px 4px 0 black;
 }
-nav {
-    margin: 0;
-    min-height: 50px;
-    padding: 30px 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 15px;
-    background-image: url(images/bg-nav.jpg);
-    background-size: auto 100%;
-    background-position: center;
-    background-repeat: repeat-x;
+
+.section {
+    margin-bottom: 48px;
 }
-nav a {
-    font-size: 30px;
-    color:rgb(255, 253, 253);
+
+.section__title {
+    margin-bottom: 24px;
+    font-size: 1.125rem;
+    color: #ffff55;
+    text-shadow: 3px 3px 0 black;
+}
+
+.intro {
+    max-width: 720px;
+    margin: 0 auto 32px;
+    text-align: center;
+}
+
+.text p {
+    margin-bottom: 16px;
+    text-indent: 24px;
+}
+
+.note {
+    font-size: 0.625rem;
+    font-style: italic;
+    color: rgb(85, 255, 255);
+}
+
+/* ===== Ссылки в тексте (строго в порядке LVHA) ===== */
+a:link {
+    color: rgb(85, 255, 255);
+    text-decoration: underline;
+}
+
+a:visited {
+    color: #8a5fd5;
+}
+
+a:hover {
+    color: #ffff55;
     text-decoration: none;
-    text-shadow: 3px 3px 0 #3f3f3f;
-    font-family: "Press Start 2P", monospace;
 }
-nav a:hover{
+
+a:active {
+    color: white;
+}
+
+/* ===== Шапка (sticky + z-index) ===== */
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    padding: 16px 0 0;
+    background: #222222 url(images/bg-nav.jpg) center top / auto 100% repeat-x;
+    border-bottom: 4px solid black;
+    box-shadow: 0 4px 0 #6a3fb5;
+    text-align: center;
+}
+
+.logo:link,
+.logo:visited {
+    display: inline-block;
+    margin-bottom: 8px;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    color: white;
+    text-decoration: none;
+    text-shadow: 3px 3px 0 black;
+}
+
+.logo:hover {
     color: #ffff55;
 }
-.row {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-    padding: 20px;
+
+.logo:active {
+    color: #55ffff;
 }
-.main-png{
-    width: 300px;
+
+/* ===== Меню: сброшенный список, li в inline-block, a в block ===== */
+.menu__list {
+    list-style: none;
+    padding: 0;
+}
+
+.menu__item {
+    display: inline-block;
+}
+
+.menu__link {
+    display: block;
+    padding: 12px 16px;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 0 black;
+}
+
+/* Специфичность: .menu__link:link (0,2,0) сильнее a:link (0,1,1),
+   поэтому пункты меню белые, а не бирюзовые и без подчёркивания.
+   Просто .menu__link (0,1,0) проиграл бы a:link, поэтому цвет и
+   text-decoration заданы именно у .menu__link:link */
+.menu__link:link,
+.menu__link:visited {
+    color: white;
+    text-decoration: none;
+}
+
+.menu__link:hover {
+    color: #ffff55;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.menu__link:active {
+    color: #55ffff;
+}
+
+.menu__link--active {
+    background-color: #6a3fb5;
+}
+
+/* ===== Баннер на главной ===== */
+.hero {
+    margin-bottom: 48px;
+    padding: 48px 16px;
+    background: #140118 url(images/bcgdi.jpg) center / 240px repeat;
+    border: 4px solid black;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.hero__box {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 24px 16px 32px 16px;
+    background-color: rgba(20, 1, 24, 0.9);
+    border: 2px solid #6a3fb5;
+    border-radius: 4px;
+    box-shadow: 4px 4px 0 black;
+}
+
+.hero__title {
+    margin-bottom: 16px;
+    font-size: 1.25rem;
+    line-height: 1.4;
+    letter-spacing: 2px;
+    color: #ffff55;
+    text-transform: uppercase;
+    text-shadow: 3px 3px 0 black;
+}
+
+.hero__text {
+    margin-bottom: 24px;
+}
+
+/* ===== Карточки: inline-block сетка без flex ===== */
+.cards {
+    text-align: center;
 }
 
 .card {
-    width: 450px;
-    background: #222;
-    color: #fff;
-    border: 2px solid #6a3fb5;
-    padding: 16px;
-    text-align: center;
-}
-
-.card img {
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
     width: 100%;
-    max-width: 140px;
-    image-rendering: pixelated;
-    margin-bottom: 10px;
-}
-body{
-    background-color: #736765;
-}
-.products{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-}
-.zagon{
-    text-align: center;
-    color: white;
-    font-size: 30px;}
-
-.color-text{
-    color: aqua;
-    font-size: 30px;
-}
-.page {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 0 20px 40px;
-    color: #fff;
-}
-.page h1 {
-    font-size: 28px;
-    color: #fff;
-    text-shadow: 3px 3px 0 #3f3f3f;
-    margin-bottom: 30px;
-}
-.block {
-    margin-bottom: 40px;
-}
-.block h2 {
-    font-size: 18px;
-    color: #ffff55;
-    text-shadow: 2px 2px 0 #3f3f3f;
-    margin-bottom: 20px;
-}
-.block p {
-    font-size: 12px;
-    line-height: 2;
-    margin-bottom: 12px;
-}
-.info-card {
-    width: 300px;
-    background: #222;
-    color: #fff;
+    max-width: 320px;
+    margin: 0 8px 24px;
+    padding: 24px 16px;
+    background-color: #222222;
     border: 2px solid #6a3fb5;
-    padding: 16px;
+    border-radius: 4px;
+    box-shadow: 4px 4px 0 black;
+    text-align: center;
 }
-.info-card h3 {
-    font-size: 14px;
+
+.card:hover {
+    border-color: #ffff55;
+}
+
+.card__img {
+    display: block;
+    width: 96px;
+    margin: 0 auto 16px;
+}
+
+.card__title {
+    margin-bottom: 8px;
+    font-size: 0.875rem;
     color: #55ffff;
-    margin-bottom: 12px;
 }
-.info-card p {
-    font-size: 11px;
-    line-height: 1.8;
-    margin: 0;
+
+.card__subtitle {
+    margin-bottom: 16px;
+    font-size: 0.625rem;
+    font-style: italic;
+    color: #ffff55;
 }
+
+.card__desc,
+.card__notes {
+    margin-bottom: 16px;
+    font-size: 0.625rem;
+    line-height: 1.7;
+    text-align: left;
+}
+
+.card__price {
+    margin-bottom: 16px;
+    font-size: 0.875rem;
+    color: #ffff55;
+}
+
+.card__old-price {
+    display: inline;
+    margin-right: 8px;
+    font-size: 0.625rem;
+    color: #8a5fd5;
+    text-decoration: line-through;
+}
+
+/* Компактная карточка на главной: длинное описание скрыто,
+   оно показывается только в каталоге */
+.card--compact .card__desc {
+    display: none;
+}
+
+/* Информационная карточка (о нас, доставка, контакты) */
+.card--info {
+    text-align: left;
+}
+
+.card--info .card__title {
+    font-size: 0.75rem;
+}
+
+/* ===== Бейдж в углу карточки (relative у .card, absolute у бейджа) ===== */
+.badge {
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    z-index: 1;
+    padding: 4px 8px;
+    background-color: #ffff55;
+    color: black;
+    font-size: 0.5rem;
+    text-transform: uppercase;
+    border: 2px solid black;
+    border-radius: 2px;
+}
+
+.badge--sale {
+    background-color: #55ffff;
+}
+
+/* ===== Кнопки и ссылки-кнопки ===== */
 .btn {
     display: inline-block;
-    font-size: 12px;
-    color: #fff;
-    background: #6a3fb5;
-    border: 3px solid #3f3f3f;
     padding: 12px 16px;
+    background-color: #6a3fb5;
+    color: white;
+    font-family: inherit;
+    font-size: 0.75rem;
+    line-height: 1;
+    text-shadow: 2px 2px 0 black;
+    border: 3px solid black;
+    border-radius: 4px;
+    box-shadow: 3px 3px 0 black;
     cursor: pointer;
-    text-decoration: none;
-    text-shadow: 2px 2px 0 #3f3f3f;
 }
+
+.btn:link,
+.btn:visited {
+    color: white;
+    text-decoration: none;
+}
+
 .btn:hover {
-    background: #8a5fd5;
+    background-color: #8a5fd5;
     color: #ffff55;
 }
-/* Форма */
+
+/* Нажатие: кнопка «вдавливается» — сдвиг через relative, тень исчезает */
+.btn:active {
+    position: relative;
+    top: 3px;
+    left: 3px;
+    box-shadow: none;
+}
+
+.btn--secondary {
+    background-color: #222222;
+}
+
+/* ===== Списки с собственным маркером ===== */
+.list {
+    margin: 0 0 16px 24px;
+    padding: 0;
+    list-style-type: square;
+}
+
+.list li {
+    margin-bottom: 8px;
+}
+
+.list li::marker {
+    color: #ffff55;
+}
+
+.list--steps {
+    list-style-type: decimal-leading-zero;
+}
+
+/* ===== Форма обратной связи ===== */
 .form {
     max-width: 600px;
     margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    background: #222;
+    padding: 24px;
+    background-color: #222222;
     border: 2px solid #6a3fb5;
-    padding: 20px;
+    border-radius: 4px;
+    box-shadow: 4px 4px 0 black;
 }
-.form label {
-    font-size: 12px;
-    color: #fff;
+
+.form__label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 0.625rem;
+    color: #55ffff;
+    text-transform: uppercase;
 }
-.form input,
-.form textarea {
-    font-size: 12px;
-    padding: 10px;
-    background: #140118;
-    color: #fff;
+
+.form__field {
+    display: block;
+    width: 100%;
+    margin-bottom: 16px;
+    padding: 12px;
+    background-color: #140118;
+    color: white;
+    font: inherit;
     border: 2px solid #6a3fb5;
+    border-radius: 4px;
     outline: none;
 }
-.form input:focus,
-.form textarea:focus {
+
+textarea.form__field {
+    resize: vertical;
+}
+
+/* Самостоятельно изученное: :focus — поле подсвечивается при вводе */
+.form__field:focus {
     border-color: #ffff55;
+    box-shadow: 0 0 0 2px #ffff55;
 }
-.form input.is-invalid,
-.form textarea.is-invalid {
-    border-color: #ff5555;
-}
+
 .form__status {
-    font-size: 11px;
-    color: #55ff55;
     min-height: 1em;
-}
-/* Корзина */
-.cart__items {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    margin-bottom: 20px;
-}
-.cart__empty {
-    text-align: center;
-}
-.cart-item {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    background: #222;
-    border: 2px solid #6a3fb5;
-    padding: 12px;
-}
-.cart-item img {
-    width: 70px;
-    image-rendering: pixelated;
-}
-.cart-item_info {
-    flex: 1;
-}
-.cart-item_name {
-    font-size: 14px;
-    margin-bottom: 8px;
-}
-.cart-item_price {
-    font-size: 11px;
-    color: #ffff55;
-}
-.cart_summary {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-    gap: 15px;
-    background: #222;
-    border: 2px solid #6a3fb5;
-    padding: 16px;
-}
-.cart_summary p {
-    font-size: 16px;
-    margin: 0;
-}
-.cart_actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-}
-/* Мобильные экраны */
-@media (max-width: 600px) {
-    .page h1 { font-size: 20px; }
-    .info-card { width: 100%; }
-    .cart-item { flex-wrap: wrap; }
-}
-.BIG-BOOM{
-    font-size: 33px;
-}
-
-/* ===== Главная страница ===== */
-.home-section {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-.home-title {
-    font-size: 33px;
-    text-align: center;
-    color: #fff;
-    text-shadow: 3px 3px 0 #3f3f3f;
-    margin: 30px 0 10px;
-}
-
-.home-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-    padding: 20px 0;
-}
-
-.home-card {
-    width: 300px;
-    background: #222;
-    color: #fff;
-    border: 2px solid #6a3fb5;
-    padding: 16px;
-    text-align: center;
-}
-
-.home-card__img {
-    width: 100%;
-    max-width: 140px;
-    image-rendering: pixelated;
-    margin-bottom: 10px;
-}
-
-.home-card__name {
-    font-size: 14px;
+    margin-top: 16px;
+    font-size: 0.625rem;
     color: #55ffff;
-    margin-bottom: 12px;
 }
 
-.home-card__text {
-    font-size: 11px;
-    line-height: 1.8;
+/* ===== Корзина ===== */
+.cart__items {
+    margin-bottom: 24px;
+}
+
+.cart__empty {
+    display: none;
+}
+
+.cart-item {
+    margin-bottom: 16px;
+    padding: 16px;
+    background-color: #222222;
+    border: 2px solid #6a3fb5;
+    border-radius: 4px;
+    box-shadow: 4px 4px 0 black;
+}
+
+.cart-item__img {
+    display: inline-block;
+    vertical-align: middle;
+    width: 48px;
+    margin-right: 16px;
+}
+
+.cart-item__info {
+    display: inline-block;
+    vertical-align: middle;
+    width: 60%;
+}
+
+.cart-item__name {
     margin-bottom: 8px;
+    font-size: 0.875rem;
+    color: #55ffff;
 }
 
-.home-card__price {
-    font-size: 14px;
-    color: #ffff55;
-    margin: 12px 0;
-}
-
-.home-btn {
-    font-size: 12px;
-    color: #fff;
-    background: #6a3fb5;
-    border: 3px solid #3f3f3f;
-    padding: 12px 16px;
-    cursor: pointer;
-    text-shadow: 2px 2px 0 #3f3f3f;
-}
-
-.home-btn:hover {
-    background: #8a5fd5;
+.cart-item__price {
     color: #ffff55;
 }
 
-@media (max-width: 600px) {
-    .home-title { font-size: 22px; }
-    .home-card { width: 100%; }
+.cart__summary {
+    padding: 16px 24px;
+    background-color: #222222;
+    border: 2px solid #6a3fb5;
+    border-radius: 4px;
+    box-shadow: 4px 4px 0 black;
+    text-align: right;
+}
+
+.cart__total {
+    margin-bottom: 16px;
+    font-size: 1rem;
+}
+
+/* Единственный id-селектор: итоговая сумма существует на сайте в одном экземпляре */
+#cart-total {
+    color: #ffff55;
+}
+
+.cart__actions .btn {
+    margin: 0 0 8px 8px;
+}
+
+/* ===== Подвал ===== */
+.footer {
+    margin-top: 48px;
+    padding: 24px 16px;
+    background: #222222 url(images/bg-nav.jpg) center bottom / auto 100% repeat-x;
+    border-top: 4px solid black;
+    text-align: center;
+}
+
+.footer__list {
+    list-style: none;
+    margin-bottom: 16px;
+    padding: 0;
+}
+
+/* В подвале пункты идут строкой текста: display: inline, без размеров */
+.footer__item {
+    display: inline;
+    margin: 0 8px;
+}
+
+.footer__link:link,
+.footer__link:visited {
+    color: white;
+    text-decoration: none;
+    text-shadow: 2px 2px 0 black;
+}
+
+.footer__link:hover {
+    color: #ffff55;
+    text-decoration: underline;
+}
+
+.footer__link:active {
+    color: #55ffff;
+}
+
+.footer__copy {
+    font-size: 0.625rem;
+    text-shadow: 2px 2px 0 black;
+}
+
+/* ===== Кнопка «Наверх» (fixed + z-index) ===== */
+.to-top {
+    position: fixed;
+    right: 16px;
+    bottom: 16px;
+    z-index: 50;
+    display: block;
+    width: 48px;
+    height: 48px;
+    line-height: 42px;
+    background-color: #6a3fb5;
+    font-size: 1rem;
+    text-align: center;
+    border: 3px solid black;
+    border-radius: 4px;
+    box-shadow: 3px 3px 0 black;
+}
+
+.to-top:link,
+.to-top:visited {
+    color: white;
+    text-decoration: none;
+}
+
+.to-top:hover {
+    background-color: #8a5fd5;
+    color: #ffff55;
+}
+
+.to-top:active {
+    color: #55ffff;
 }
