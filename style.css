@@ -1,21 +1,5 @@
-/* ============================================================
-   style.css — единственный файл стилей магазина «Биомы и измерения»
+/* стили магазина */
 
-   Палитра (5 основных цветов):
-     #140118  фон страницы (тёмно-фиолетовый)
-     #222222  панели, карточки, шапка (тёмно-серый)
-     #6a3fb5  акцент: рамки, кнопки, активный пункт меню (фиолетовый)
-     #ffff55  подсветка: цены, hover, бейдж «Хит» (жёлтый)
-     #55ffff  заголовки карточек, ссылки в тексте (бирюзовый),
-              он же записан как rgb(85, 255, 255)
-   Нейтральные: white (текст), black (тени и рамки)
-   Оттенок акцента для hover кнопок и посещённых ссылок: #8a5fd5
-
-   Шаг отступов: 8px (8, 16, 24, 32, 48)
-   Шрифты в rem, ширины в % и max-width, рамки и тени в px
-   ============================================================ */
-
-/* ===== Сброс и базовые правила ===== */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -28,10 +12,10 @@ html {
 body {
     min-height: 100vh;
     background-color: #140118;
-    color: white;
     font-family: "Press Start 2P", "Courier New", monospace;
     font-size: 0.75rem;
     line-height: 1.6;
+    color: white;
 }
 
 img {
@@ -40,15 +24,12 @@ img {
     image-rendering: pixelated;
 }
 
-/* Пиксельный шрифт существует только в одном начертании:
-   отключаем синтетический bold у заголовков, иначе буквы «плывут» */
-h1,
-h2,
-h3 {
+/* у пиксельного шрифта нет жирного, иначе буквы плывут */
+h1, h2, h3 {
     font-weight: normal;
 }
 
-/* ===== Контейнер страницы ===== */
+
 .container {
     max-width: 1100px;
     margin: 0 auto;
@@ -59,7 +40,6 @@ h3 {
     padding: 32px 16px 48px;
 }
 
-/* ===== Заголовки и текст ===== */
 .page__title {
     margin-bottom: 32px;
     font-size: 1.5rem;
@@ -98,26 +78,23 @@ h3 {
     color: rgb(85, 255, 255);
 }
 
-/* ===== Ссылки в тексте (строго в порядке LVHA) ===== */
 a:link {
     color: rgb(85, 255, 255);
     text-decoration: underline;
 }
-
 a:visited {
     color: #8a5fd5;
 }
-
 a:hover {
     color: #ffff55;
     text-decoration: none;
 }
-
 a:active {
     color: white;
 }
 
-/* ===== Шапка (sticky + z-index) ===== */
+
+/* шапка */
 .header {
     position: sticky;
     top: 0;
@@ -129,8 +106,7 @@ a:active {
     text-align: center;
 }
 
-.logo:link,
-.logo:visited {
+.logo:link, .logo:visited {
     display: inline-block;
     margin-bottom: 8px;
     font-size: 1rem;
@@ -139,16 +115,14 @@ a:active {
     text-decoration: none;
     text-shadow: 3px 3px 0 black;
 }
-
 .logo:hover {
     color: #ffff55;
 }
-
 .logo:active {
     color: #55ffff;
 }
 
-/* ===== Меню: сброшенный список, li в inline-block, a в block ===== */
+/* меню */
 .menu__list {
     list-style: none;
     padding: 0;
@@ -166,21 +140,14 @@ a:active {
     text-shadow: 2px 2px 0 black;
 }
 
-/* Специфичность: .menu__link:link (0,2,0) сильнее a:link (0,1,1),
-   поэтому пункты меню белые, а не бирюзовые и без подчёркивания.
-   Просто .menu__link (0,1,0) проиграл бы a:link, поэтому цвет и
-   text-decoration заданы именно у .menu__link:link */
-.menu__link:link,
-.menu__link:visited {
+.menu__link:link, .menu__link:visited {
     color: white;
     text-decoration: none;
 }
-
 .menu__link:hover {
-    color: #ffff55;
     background-color: rgba(0, 0, 0, 0.5);
+    color: #ffff55;
 }
-
 .menu__link:active {
     color: #55ffff;
 }
@@ -189,7 +156,7 @@ a:active {
     background-color: #6a3fb5;
 }
 
-/* ===== Баннер на главной ===== */
+
 .hero {
     margin-bottom: 48px;
     padding: 48px 16px;
@@ -223,7 +190,8 @@ a:active {
     margin-bottom: 24px;
 }
 
-/* ===== Карточки: inline-block сетка без flex ===== */
+
+/* карточки товаров */
 .cards {
     text-align: center;
 }
@@ -242,7 +210,6 @@ a:active {
     box-shadow: 4px 4px 0 black;
     text-align: center;
 }
-
 .card:hover {
     border-color: #ffff55;
 }
@@ -266,8 +233,7 @@ a:active {
     color: #ffff55;
 }
 
-.card__desc,
-.card__notes {
+.card__desc, .card__notes {
     margin-bottom: 16px;
     font-size: 0.625rem;
     line-height: 1.7;
@@ -288,22 +254,18 @@ a:active {
     text-decoration: line-through;
 }
 
-/* Компактная карточка на главной: длинное описание скрыто,
-   оно показывается только в каталоге */
 .card--compact .card__desc {
     display: none;
 }
 
-/* Информационная карточка (о нас, доставка, контакты) */
 .card--info {
     text-align: left;
 }
-
 .card--info .card__title {
     font-size: 0.75rem;
 }
 
-/* ===== Бейдж в углу карточки (relative у .card, absolute у бейджа) ===== */
+/* бейдж хит/акция */
 .badge {
     position: absolute;
     top: -2px;
@@ -317,12 +279,12 @@ a:active {
     border: 2px solid black;
     border-radius: 2px;
 }
-
 .badge--sale {
     background-color: #55ffff;
 }
 
-/* ===== Кнопки и ссылки-кнопки ===== */
+
+/* кнопки */
 .btn {
     display: inline-block;
     padding: 12px 16px;
@@ -338,8 +300,7 @@ a:active {
     cursor: pointer;
 }
 
-.btn:link,
-.btn:visited {
+.btn:link, .btn:visited {
     color: white;
     text-decoration: none;
 }
@@ -349,7 +310,7 @@ a:active {
     color: #ffff55;
 }
 
-/* Нажатие: кнопка «вдавливается» — сдвиг через relative, тень исчезает */
+/* эффект нажатия */
 .btn:active {
     position: relative;
     top: 3px;
@@ -361,14 +322,14 @@ a:active {
     background-color: #222222;
 }
 
-/* ===== Списки с собственным маркером ===== */
+
 .list {
     margin: 0 0 16px 24px;
     padding: 0;
     list-style-type: square;
 }
 
-.list li {
+.list li{
     margin-bottom: 8px;
 }
 
@@ -380,7 +341,8 @@ a:active {
     list-style-type: decimal-leading-zero;
 }
 
-/* ===== Форма обратной связи ===== */
+
+/* форма */
 .form {
     max-width: 600px;
     margin: 0 auto;
@@ -416,7 +378,6 @@ textarea.form__field {
     resize: vertical;
 }
 
-/* Самостоятельно изученное: :focus — поле подсвечивается при вводе */
 .form__field:focus {
     border-color: #ffff55;
     box-shadow: 0 0 0 2px #ffff55;
@@ -429,12 +390,13 @@ textarea.form__field {
     color: #55ffff;
 }
 
-/* ===== Корзина ===== */
+
+/* корзина */
 .cart__items {
     margin-bottom: 24px;
 }
 
-.cart__empty {
+.cart__empty{
     display: none;
 }
 
@@ -484,7 +446,6 @@ textarea.form__field {
     font-size: 1rem;
 }
 
-/* Единственный id-селектор: итоговая сумма существует на сайте в одном экземпляре */
 #cart-total {
     color: #ffff55;
 }
@@ -493,7 +454,8 @@ textarea.form__field {
     margin: 0 0 8px 8px;
 }
 
-/* ===== Подвал ===== */
+
+/* подвал */
 .footer {
     margin-top: 48px;
     padding: 24px 16px;
@@ -508,24 +470,20 @@ textarea.form__field {
     padding: 0;
 }
 
-/* В подвале пункты идут строкой текста: display: inline, без размеров */
 .footer__item {
     display: inline;
     margin: 0 8px;
 }
 
-.footer__link:link,
-.footer__link:visited {
+.footer__link:link, .footer__link:visited {
     color: white;
     text-decoration: none;
     text-shadow: 2px 2px 0 black;
 }
-
 .footer__link:hover {
     color: #ffff55;
     text-decoration: underline;
 }
-
 .footer__link:active {
     color: #55ffff;
 }
@@ -535,7 +493,8 @@ textarea.form__field {
     text-shadow: 2px 2px 0 black;
 }
 
-/* ===== Кнопка «Наверх» (fixed + z-index) ===== */
+
+/* кнопка наверх */
 .to-top {
     position: fixed;
     right: 16px;
@@ -553,17 +512,14 @@ textarea.form__field {
     box-shadow: 3px 3px 0 black;
 }
 
-.to-top:link,
-.to-top:visited {
+.to-top:link, .to-top:visited {
     color: white;
     text-decoration: none;
 }
-
 .to-top:hover {
     background-color: #8a5fd5;
     color: #ffff55;
 }
-
 .to-top:active {
     color: #55ffff;
 }
