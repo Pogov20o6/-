@@ -7,15 +7,14 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap-utilities.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body id="top">
     <header class="header">
         <a class="logo" href="index.html">Биомы и измерения</a>
         <nav class="menu">
-            <ul class="menu__list">
+            <ul class="menu__list d-flex flex-wrap justify-content-center column-gap-3">
                 <li class="menu__item"><a class="menu__link" href="index.html">Главная</a></li>
                 <li class="menu__item"><a class="menu__link" href="catalog.html">Каталог</a></li>
                 <li class="menu__item"><a class="menu__link" href="about.html">О нас</a></li>
@@ -31,43 +30,73 @@
 
         <section class="section">
             <h2 class="section__title">Свяжитесь с нами</h2>
-            <div class="cards">
-                <article class="card card--info">
-                    <h3 class="card__title">Телефон</h3>
-                    <p class="card__desc"><a href="tel:+77785235135">+7 (778) 523-51-35</a></p>
-                </article>
-                <article class="card card--info">
-                    <h3 class="card__title">Почта</h3>
-                    <p class="card__desc"><a href="mailto:info@example.kz">info@example.kz</a></p>
-                </article>
-                <article class="card card--info">
-                    <h3 class="card__title">Адрес</h3>
-                    <p class="card__desc">г. Алматы, ул. Пушкина, 1</p>
-                </article>
-                <article class="card card--info">
-                    <h3 class="card__title">Время работы</h3>
-                    <p class="card__desc">Ежедневно с 10:00 до 20:00</p>
-                </article>
+            <!-- Bootstrap: row + column -->
+            <div class="cards row g-4 justify-content-center">
+                <div class="col-md-6 col-lg-3">
+                    <article class="card card--info h-100">
+                        <h3 class="card__title">Телефон</h3>
+                        <p class="card__desc"><a href="tel:+77785235135">+7 (778) 523-51-35</a></p>
+                    </article>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <article class="card card--info h-100">
+                        <h3 class="card__title">Почта</h3>
+                        <p class="card__desc"><a href="mailto:info@example.kz">info@example.kz</a></p>
+                    </article>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <article class="card card--info h-100">
+                        <h3 class="card__title">Адрес</h3>
+                        <p class="card__desc">г. Алматы, ул. Пушкина, 1</p>
+                    </article>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <article class="card card--info h-100">
+                        <h3 class="card__title">Время работы</h3>
+                        <p class="card__desc">Ежедневно с 10:00 до 20:00</p>
+                    </article>
+                </div>
+            </div>
+
+            <!-- Bootstrap: dropdown -->
+            <div class="dropdown text-center mt-4">
+                <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown">Быстрая связь</button>
+                <ul class="dropdown-menu" data-bs-theme="dark">
+                    <li><a class="dropdown-item" href="tel:+77785235135">Позвонить</a></li>
+                    <li><a class="dropdown-item" href="mailto:info@example.kz">Написать на почту</a></li>
+                    <li><a class="dropdown-item" href="https://wa.me/77785235135">WhatsApp</a></li>
+                </ul>
             </div>
         </section>
 
+        <!-- Bootstrap: form -->
         <section class="section">
             <h2 class="section__title">Написать сообщение</h2>
-            <form id="contact-form" class="form" novalidate>
-                <label class="form__label" for="name">Имя</label>
-                <input class="form__field" type="text" id="name" name="name" placeholder="Как к вам обращаться" required>
-                <label class="form__label" for="phone">Телефон</label>
-                <input class="form__field" type="tel" id="phone" name="phone" placeholder="+7 ___ ___ __ __">
-                <label class="form__label" for="message">Сообщение</label>
-                <textarea class="form__field" id="message" name="message" rows="5" placeholder="Ваш вопрос" required></textarea>
-                <button type="submit" class="btn">Отправить</button>
+            <form id="contact-form" class="form" data-bs-theme="dark" novalidate>
+                <label class="form-label form__label" for="name">Имя</label>
+                <input class="form-control form__field" type="text" id="name" name="name" placeholder="Как к вам обращаться" required>
+                <label class="form-label form__label" for="phone">Телефон</label>
+                <input class="form-control form__field" type="tel" id="phone" name="phone" placeholder="+7 ___ ___ __ __">
+                <label class="form-label form__label" for="topic">Тема</label>
+                <select class="form-select form__field" id="topic" name="topic">
+                    <option>Вопрос о заказе</option>
+                    <option>Доставка и оплата</option>
+                    <option>Другое</option>
+                </select>
+                <label class="form-label form__label" for="message">Сообщение</label>
+                <textarea class="form-control form__field" id="message" name="message" rows="5" placeholder="Ваш вопрос" required></textarea>
+                <div class="form-check mb-3">
+                    <input class="form-check-input" type="checkbox" id="agree" name="agree" required>
+                    <label class="form-check-label" for="agree">Согласен на обработку данных</label>
+                </div>
+                <button type="submit" class="btn w-100">Отправить</button>
                 <p id="form-status" class="form__status" aria-live="polite"></p>
             </form>
         </section>
     </main>
 
     <footer class="footer">
-        <ul class="footer__list">
+        <ul class="footer__list d-flex flex-wrap justify-content-center column-gap-3">
             <li class="footer__item"><a class="footer__link" href="index.html">Главная</a></li>
             <li class="footer__item"><a class="footer__link" href="catalog.html">Каталог</a></li>
             <li class="footer__item"><a class="footer__link" href="about.html">О нас</a></li>
@@ -79,5 +108,7 @@
     </footer>
 
     <a class="to-top" href="#top" title="Наверх">▲</a>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

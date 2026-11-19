@@ -40,12 +40,24 @@ img {
     image-rendering: pixelated;
 }
 
+/* Bootstrap возвращает абзацам, спискам и заголовкам свои отступы: убираем их */
+p,
+ul,
+ol,
+h1,
+h2,
+h3 {
+    margin: 0;
+}
+
 /* Пиксельный шрифт существует только в одном начертании:
-   отключаем синтетический bold у заголовков, иначе буквы «плывут» */
+   отключаем синтетический bold у заголовков, иначе буквы «плывут».
+   line-height: Bootstrap сжимает заголовки до 1.2, возвращаем как у текста */
 h1,
 h2,
 h3 {
     font-weight: normal;
+    line-height: inherit;
 }
 
 /* ===== Контейнер страницы ===== */
@@ -223,20 +235,21 @@ a:active {
     margin-bottom: 24px;
 }
 
-/* ===== Карточки: inline-block сетка без flex ===== */
+/* ===== Карточки: сетку и отступы между ними даёт Bootstrap (row g-4 + col) ===== */
 .cards {
     text-align: center;
 }
 
+/* color: у Bootstrap есть свой класс .card с тёмным текстом, возвращаем белый */
 .card {
     position: relative;
     display: inline-block;
     vertical-align: top;
     width: 100%;
     max-width: 320px;
-    margin: 0 8px 24px;
     padding: 24px 16px;
     background-color: #222222;
+    color: white;
     border: 2px solid #6a3fb5;
     border-radius: 4px;
     box-shadow: 4px 4px 0 black;
@@ -304,6 +317,8 @@ a:active {
 }
 
 /* ===== Бейдж в углу карточки (relative у .card, absolute у бейджа) ===== */
+/* font-weight и line-height: у Bootstrap есть свой класс .badge,
+   он делает текст жирным и сжимает строку, возвращаем как было */
 .badge {
     position: absolute;
     top: -2px;
@@ -313,6 +328,8 @@ a:active {
     background-color: #ffff55;
     color: black;
     font-size: 0.5rem;
+    font-weight: normal;
+    line-height: 1.6;
     text-transform: uppercase;
     border: 2px solid black;
     border-radius: 2px;
@@ -323,7 +340,17 @@ a:active {
 }
 
 /* ===== Кнопки и ссылки-кнопки ===== */
+/* У Bootstrap есть свой класс .btn. Его цвета при наведении, нажатии и фокусе
+   берутся из переменных --bs-btn-*: записываем в них нашу палитру,
+   иначе рамка и фон кнопки пропадают */
 .btn {
+    --bs-btn-hover-color: #ffff55;
+    --bs-btn-hover-bg: #8a5fd5;
+    --bs-btn-hover-border-color: black;
+    --bs-btn-active-color: #ffff55;
+    --bs-btn-active-bg: #8a5fd5;
+    --bs-btn-active-border-color: black;
+    --bs-btn-focus-shadow-rgb: 255, 255, 85;
     display: inline-block;
     padding: 12px 16px;
     background-color: #6a3fb5;
@@ -416,8 +443,11 @@ textarea.form__field {
     resize: vertical;
 }
 
-/* Самостоятельно изученное: :focus — поле подсвечивается при вводе */
+/* Самостоятельно изученное: :focus — поле подсвечивается при вводе.
+   Фон и цвет текста повторены, потому что .form-control из Bootstrap меняет их при фокусе */
 .form__field:focus {
+    background-color: #140118;
+    color: white;
     border-color: #ffff55;
     box-shadow: 0 0 0 2px #ffff55;
 }
